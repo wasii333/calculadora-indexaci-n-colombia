@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="always" />
+    <meta name="description" content="La Calculadora de Inflación de Colombia te permite estimar fácilmente cómo varían los precios y el poder adquisitivo a lo largo del tiempo. Ingresa un monto y descubre el impacto de la inflación en la economía colombiana de manera rápida y precisa." />
+    <meta name="keywords" content="adquisitivo colombia, colombia currency into pkr,calculadora de inflación colombia,calculadora inflación colombia 2022,colombian dollar to pkr,inflación colombia calculadora,calculadora de inflacion colombia" />
+    <link href="" rel="canonical" />
+    <title>Calculadora de Inflación de Colombia</title>
+    <style>
+        /* Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0 1rem;
+            background: #f7f3e9; /* soft cream */
+            color: #1a2138; /* dark navy text */
+            line-height: 1.6;
+        }
+       
+        
+         header {
+            background: #2c3e50;
+            color: white;
+            max-width: 1400px;
+            padding: 1rem 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+            display: flex;
+            justify-content: right;
+            gap: 2rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: arial;
+        }
+        nav ul li a:hover {
+            color: #a05e27;
+        }
+
+        .site-title {
+            max-width: 700px;
+            margin: 2rem auto 2rem;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.9rem;
+            letter-spacing: 1px;
+            color: #212121;
+        }
+
+        /* Dropdown container */
+        .dropdown-container {
+            max-width: 720px;
+            margin: 0 auto 2rem;
+            display: flex;
+            justify-content: center;
+        }
+        select {
+            font-size: 1rem;
+            padding: 0.58rem 1.2rem;
+            width: 100%;
+            max-width: 360px;
+            border-radius: 8px;
+            border: 2px solid #f4d35e; /* gold border */
+            color: #14213d; /* dark navy */
+            background: #fff8dc; /* light cream */
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease-in-out;
+            box-shadow: 0 2px 8px rgba(244, 211, 94, 0.4);
+        }
+        select:hover, select:focus {
+            background: #f4d35e; /* gold */
+            color: #14213d;
+            border-color: #b8860b; /* darker gold */
+            outline: none;
+            box-shadow: 0 3px 11px rgba(184, 134, 11, 0.7);
+        }
+        main {
+            max-width: 720px;
+            margin: 0 auto 3rem;
+            background: #fff8dc; /* light cream */
+            border-radius: 15px;
+            padding: 2.6rem 3rem;
+            box-shadow: 0 8px 25px rgba(244, 211, 94, 0.3);
+        }
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #403f4c; /* dark gray */
+            font-size: 1.1rem;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 0.65rem 1.2rem;
+            font-size: 1.1rem;
+            border: 2px solid #f4d35e;
+            border-radius: 8px;
+            margin-bottom: 1.7rem;
+            background: #fff8dc;
+            color: #403f4c;
+            transition: border-color 0.35s ease, box-shadow 0.35s ease;
+            box-shadow: inset 0 1px 4px rgba(244, 211, 94,0.35);
+        }
+        input[type="number"]:focus {
+            border-color: #b8860b; /* darker gold */
+            box-shadow: 0 0 10px rgba(184, 134, 11, 0.7);
+            outline: none;
+            background: #fff5cc;
+        }
+        button.calculate-btn {
+            width: 100%;
+            background-color: #f4d35e;
+            color: #14213d;
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 0.95rem 1.8rem;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(244, 211, 94, 0.6);
+            transition: background-color 0.3s ease;
+            margin-bottom: 2.5rem;
+        }
+        button.calculate-btn:hover {
+            background-color: #b8860b;
+            box-shadow: 0 9px 28px rgba(184, 134, 11, 0.7);
+            color: #fff8dc;
+        }
+        .result {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #403f4c;
+            padding: 1.1rem 1.6rem;
+            border-radius: 12px;
+            background-color: #fff5cc;
+            border: 3px solid #b8860b;
+            margin-bottom: 2.3rem;
+            text-align: center;
+            user-select: none;
+        }
+        .cta-container {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #14213d;
+            color: #f4d35e;
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 1rem 3rem;
+            text-decoration: none;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(20, 33, 61, 0.8);
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #0a1524;
+            color: #fff8dc;
+        }
+        article {
+            max-width: 720px;
+            margin: 0 auto 4rem;
+            background-color: #fff8dc;
+            border-left: 14px solid #f4d35e;
+            padding: 2.4rem 3.2rem;
+            border-radius: 16px;
+            color: #403f4c;
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+        article h2 {
+            margin-top: 0;
+            color: #b8860b;
+            font-weight: 900;
+            font-size: 2.1rem;
+            margin-bottom: 1.4rem;
+        }
+        footer {
+            background-color: #14213d;
+            color: #f4d35e;
+            text-align: center;
+            font-size: 0.95rem;
+            padding: 1.4rem 0;
+            border-top: 4px solid #b8860b;
+        }
+        @media(max-width: 480px) {
+            main, article {
+                padding: 1.8rem 1.8rem;
+            }
+            .dropdown-container {
+                padding: 0 1rem;
+            }
+            select {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="https://calculadorade-inflacion.com/index.html">Home</a></li>
+            <li><a href="https://calculadorade-inflacion.com/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="https://calculadorade-inflacion.com/contact.html">Contact Us</a></li>
+            <li><a href="https://calculadorade-inflacion.com/index.html">Blog</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="site-title" aria-label="Título del sitio">
+    Calculadora de Inflación de Colombia
+</div>
+
+
+<div class="dropdown-container">
+    <select id="pageSelector" aria-label="Selecciona la calculadora de inflación por país">
+        <option value="https://calculadorade-inflacion.com/index.html" selected>Calculadora de Inflación Argentina</option>
+        <option value="https://calculadorade-inflacion.com/calculadora-ipc-chile.html">Calculadora de la inflación de Chile</option>
+        <option value="https://calculadorade-inflacion.com/colombia.html">Calculadora de Inflación de Colombia</option>
+        <option value="https://calculadorade-inflacion.com/mexico.html">Calculadora de Inflación México</option>
+        <option value="https://calculadorade-inflacion.com/paraguay.html">Calculadora de la inflación Paraguay</option>
+        <option value="https://calculadorade-inflacion.com/peru.html">Calculadora de inflación de Perú</option>
+        <option value="https://calculadorade-inflacion.com/uruguay.html">Calculadora de inflación Uruguay</option>
+        <option value="https://calculadorade-inflacion.com/united-state.html">Calculadora de inflación Estados Unidos</option>
+    </select>
+</div>
+
+<main>
+    <form id="inflationCalc" aria-label="Formulario calculadora de inflación">
+        <label for="valorInicial">Valor inicial (moneda local):</label>
+        <input type="number" id="valorInicial" name="valorInicial" step="0.01" min="0"
+               placeholder="Ingrese el valor inicial" required />
+
+        <label for="inflacion">Tasa de inflación anual (%):</label>
+        <input type="number" id="inflacion" name="inflacion" step="0.01" min="0"
+               placeholder="Ingrese la tasa de inflación" required />
+
+        <label for="años">Número de años:</label>
+        <input type="number" id="años" name="años" step="1" min="0"
+               placeholder="Ingrese la cantidad de años" required />
+
+        <button type="submit" class="calculate-btn" aria-label="Calcular valor ajustado por inflación">Calcular</button>
+    </form>
+
+    <div class="result" id="resultado" role="region" aria-live="polite" aria-atomic="true" style="display:none;"></div>
+
+    <div class="cta-container">
+        <a href="https://calculadorade-inflacion.com/colombia.html"
+           class="cta-button"
+           rel="dofollow"
+           aria-label="Calculadora de Inflación de Colombia">Calculadora de Inflación de Colombia</a>
+    </div>
+</main>
+
+<article>
+    <h2>Calculadora de Inflación de Colombia</h2>
+    <p>
+        La <strong>Calculadora de Inflación de Colombia</strong> es una herramienta eficaz y sencilla para entender cómo la inflación impacta el valor del dinero en el tiempo. En un contexto económico con inflación variable, conocer el valor ajustado de una cantidad de moneda es vital para proteger el poder adquisitivo.
+    </p>
+    <p>
+        Con esta calculadora podrá ingresar el valor inicial, la tasa anual de inflación y el número de años para obtener un cálculo ajustado que refleja el cambio en precios y el valor real del dinero en el periodo seleccionado.
+    </p>
+    <p>
+        Esta funcionalidad permite a quienes planifican finanzas personales, salarios o inversiones adaptarse a la realidad económica y evitar pérdidas por inflación, facilitando decisiones más inteligentes y seguras.
+    </p>
+    <p>
+        Usar esta herramienta es una forma práctica, rápida y confiable para visualizar el impacto de la inflación en sus finanzas, con datos claros y cálculos precisos.
+    </p>
+    <p>La inflación en Colombia es uno de los factores económicos que más impacto tiene en la vida cotidiana de millones de personas. Cuando escuchamos que la inflación subió o que el Banco de la República decidió subir las tasas de interés, muchas veces no entendemos realmente cómo nos afecta esto en el bolsillo. La realidad es que la inflación es el aumento sostenido y generalizado de los precios de los bienes y servicios que consumimos a diario, lo que significa que con el tiempo el dinero pierde valor. Es decir, con la misma cantidad de pesos podemos comprar menos productos o servicios que antes.</p>
+    <p>Por ejemplo, en el año 2010 con 10.000 pesos colombianos podías comprar varios productos básicos en un supermercado, pero en el 2025 esa misma cantidad apenas alcanza para uno o dos productos pequeños. Este fenómeno se da porque los precios no permanecen fijos; aumentan debido a diferentes factores como el costo de producción, la tasa de cambio, la demanda, la oferta, las políticas monetarias y la situación económica internacional. Así, la inflación es un reflejo de la pérdida del poder adquisitivo del dinero con el paso del tiempo.</p>
+    <p>
+        En Colombia, el principal indicador que mide la inflación es el IPC, que significa Índice de Precios al Consumidor. Este índice es calculado mensualmente por el DANE, el Departamento Administrativo Nacional de Estadística, y representa la variación promedio de los precios de una canasta de bienes y servicios que son consumidos por los hogares colombianos. Esta canasta está compuesta por productos básicos como alimentos, transporte, vivienda, educación, salud y otros gastos esenciales. Cada grupo de productos tiene un peso específico dentro de la canasta, porque no todos los bienes tienen la misma importancia en el gasto de los hogares. Por ejemplo, el gasto en alimentos suele tener un peso mayor que el gasto en entretenimiento.
+    </p>
+    <p>El IPC es fundamental porque nos permite saber cuánto han aumentado los precios en un período determinado y, por lo tanto, cuál ha sido la inflación acumulada en ese tiempo. Si el IPC sube, significa que los precios están aumentando y que el dinero está perdiendo valor real. En otras palabras, si hace cinco años guardaste un millón de pesos bajo el colchón, hoy ese millón no te alcanza para comprar lo mismo que en ese entonces. Y aquí es donde surge la necesidad de herramientas como la calculadora de inflación, que nos permite saber cuánto ha cambiado el valor de nuestro dinero.</p>
+    <p>La calculadora de inflación de Colombia es una herramienta práctica que, con base en los datos del IPC histórico, calcula cuánto equivale en el presente una cantidad de dinero del pasado o cuánto equivaldrá en el futuro una cantidad actual, ajustada por inflación. Esto es especialmente útil para personas que quieren saber cuánto deberían ajustar sus ingresos, cuánto deberían aumentar los precios de sus productos, o simplemente entender la pérdida de valor de sus ahorros. Por ejemplo, si en el año 2015 ganabas un salario de 1.000.000 de pesos y quieres saber cuánto deberías ganar en 2025 para mantener el mismo poder adquisitivo, la calculadora te da la respuesta usando la inflación acumulada en ese período.</p>
+</article>
+
+<footer>
+    © 2025 Calculadora de Inflación - Todos los derechos reservados.
+</footer>
+
+<script>
+    // Redirige al seleccionar en el dropdown
+    document.getElementById('pageSelector').addEventListener('change', function() {
+        const url = this.value;
+        if(url) {
+            window.location.href = url;
+        }
+    });
+
+    // Lógica calculadora de inflación
+    document.getElementById('inflationCalc').addEventListener('submit', function(e){
+        e.preventDefault();
+        const valorInicial = parseFloat(document.getElementById('valorInicial').value);
+        const inflacion = parseFloat(document.getElementById('inflacion').value) / 100;
+        const años = parseInt(document.getElementById('años').value);
+
+        if(isNaN(valorInicial) || isNaN(inflacion) || isNaN(años) || valorInicial < 0 || inflacion < 0 || años < 0){
+            alert('Por favor, ingresa valores válidos y no negativos.');
+            return;
+        }
+
+        const valorFinal = valorInicial * Math.pow((1 + inflacion), años);
+        const resultado = document.getElementById('resultado');
+        resultado.style.display = 'block';
+        resultado.textContent = `Valor ajustado por inflación tras ${años} año(s): ${valorFinal.toFixed(2)} (moneda local)`;
+        resultado.focus();
+    });
+</script>
+</body>
+</html>
